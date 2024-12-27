@@ -76,6 +76,8 @@ class LinkedList:
             q.next = r 
         self.head = q
             
+    def reverse_recursion(self):
+        pass 
 
     def cycle_detection(self):
         slow = fast = self.head
