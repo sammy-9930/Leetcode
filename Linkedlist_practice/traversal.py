@@ -10,8 +10,9 @@ class LinkedList:
     def traverse(self):
         current = self.head 
         while current is not None:
-            print(current.val)
+            print(current.val, end=" -> ")
             current = current.next 
+        print("None")
     
     def insert_at_beginning(self, data):
         new_node = Node(data)
@@ -40,6 +41,42 @@ class LinkedList:
         new_node.next = current.next
         current.next = new_node 
 
+    def delete_at_first(self):
+        if not self.head:
+            return 
+        self.head = self.head.next 
+
+    def delete_at_end(self):
+        current = self.head 
+        while current.next and current.next.next:
+            current = current.next 
+        current.next = None 
+
+    def delete_at_position(self, position):
+        if position == 0:
+            if self.head:
+                self.head = self.head.next 
+            return 
+        current = self.head 
+        for _ in range(position - 1):
+            if not current or not current.next:
+                raise IndexError("Position out of bounds")
+            current = current.next 
+        if current.next:
+            current.next = current.next.next 
+
+    def reverse_iterative(self):
+        p = self.head 
+        q = None
+        r = None
+        while p:
+            r = q 
+            q = p 
+            p = p.next 
+            q.next = r 
+        self.head = q
+            
+
     def cycle_detection(self):
         slow = fast = self.head
         if fast and fast.next: 
@@ -54,4 +91,9 @@ l1 = LinkedList()
 l1.insert_at_beginning(1)
 l1.insert_at_end(2)
 l1.insert_at_end(3)
+l1.insert_at_end(4)
+l1.traverse()
+l1.delete_at_end()
+l1.traverse()
+l1.reverse_iterative()
 l1.traverse()
