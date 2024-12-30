@@ -22,6 +22,12 @@ class BinaryTree:
             self.preorder_recursive(node.left)
             self.preorder_recursive(node.right)
 
+    def postorder_recursive(self, node):
+        if node:
+            self.postorder_recursive(node.left)
+            self.postorder_recursive(node.right)
+            print(node.val, end=" ")
+
 tree = BinaryTree(Node(15))
 tree.root.left = Node(10)
 tree.root.right = Node(20)
@@ -32,3 +38,5 @@ print("Inorder Recursive:")
 tree.inorder_recursive(tree.root)
 print("\nPreorder Recursive:")
 tree.preorder_recursive(tree.root)
+print("\nPostorder recursive: ")
+tree.postorder_recursive(tree.root)
