@@ -28,6 +28,14 @@ class BinaryTree:
             self.postorder_recursive(node.right)
             print(node.val, end=" ")
 
+    def recursive_search(self, node, value):
+        if not node or node.val == value:
+            return node 
+        if value < node.val:
+            return self.recursive_search(node.left, value)
+        return self.recursive_search(node.right, value)
+        
+
 tree = BinaryTree(Node(15))
 tree.root.left = Node(10)
 tree.root.right = Node(20)
@@ -40,3 +48,11 @@ print("\nPreorder Recursive:")
 tree.preorder_recursive(tree.root)
 print("\nPostorder recursive: ")
 tree.postorder_recursive(tree.root)
+
+value_to_find = 12
+print(f"\n\nSearching for {value_to_find} (Recursive):")
+result = tree.recursive_search(node=tree.root, value=value_to_find)
+if result:
+    print(f"Found node with value {result.val}")
+else:
+    print("Value not found in BST")
