@@ -12,8 +12,8 @@ def quicksort(arr):
     if len(arr) <= 1:
         return arr 
     pivot = arr[0]
-    left = [element for element in arr if element < pivot]
-    right = [element for element in arr if element >= pivot]
+    left = [element for element in arr[1:] if element < pivot]
+    right = [element for element in arr[1:] if element >= pivot]
     return quicksort(left) + [pivot] + quicksort(right)
 
 arr = [1, 7, 4, 1, 10, 9, -2]
@@ -40,9 +40,10 @@ def quicksort(arr):
     if len(arr) <= 1:
         return arr 
     pivot = arr[len(arr) // 2]
-    left = [element for element in arr if element < pivot and element != pivot]
+    left = [element for element in arr if element < pivot]
+    middle = [element for element in arr if element == pivot]
     right = [element for element in arr if element > pivot]
-    return quicksort(left) + [pivot] + quicksort(right)
+    return quicksort(left) + middle + quicksort(right)
 
 arr = [1, 7, 4, 1, 10, 9, -2]
 print(quicksort(arr))
