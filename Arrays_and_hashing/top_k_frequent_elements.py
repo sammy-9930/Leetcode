@@ -39,19 +39,14 @@ class Solution(object):
         count = {}
         for number in nums:
             count[number] = 1 + count.get(number, 0)
-        
         heap = []
-        for key,value in count.items():
-            heapq.heappush(heap, [value, key])
-            # remove least occuring element 
+        for key, value in count.items():
+            if len(heap) < k or value > heap[0][0]:
+                heapq.heappush(heap, [value, key])
             if len(heap) > k:
                 heapq.heappop(heap)
-        res = []
-        for i in range(k):
-            res.append(heapq.heappop(heap)[1])
-        return res 
-
-        
+        return [i[1] for i in heap]
+    
 """
 Bucket sort
 Time complexity: O(n)
