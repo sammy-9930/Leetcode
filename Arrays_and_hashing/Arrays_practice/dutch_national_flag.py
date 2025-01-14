@@ -37,13 +37,13 @@ class Solution(object):
                 c2 += 1
         for i in range(c0):
             nums[i] = 0
-            i += 1 
+            
         for i in range(c1):
             nums[i + c0] = 1
-            i += 1 
+             
         for i in range(c2):
             nums[i + c0 + c1] = 2
-            i += 1
+           
         print(nums)
         return nums
         
