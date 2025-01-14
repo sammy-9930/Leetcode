@@ -1,3 +1,19 @@
+"""Brute force"""
+def three_sum(arr):
+    res = []
+    n = len(arr)
+    for i in range(n - 2):
+        for j in range(i+1, n-1):
+            for k in range(j+1, n):
+                if arr[i] + arr[j] + arr[k] == 0:
+                    triplet = sorted([arr[i], arr[j], arr[k]])  # Sort the triplet
+                    if triplet not in res:  # Avoid duplicates
+                        res.append(triplet)
+    return res
+                    
+arr = nums = [-1,0,1,2,-1,-4]
+print(three_sum(arr))
+
 def three_sum(nums):
     res = []
     nums.sort()
