@@ -1,15 +1,21 @@
+"""
+Brute force approach
+Time complexity = O(m+n)log(m+n)
+Space complexity = O(m+n)
+"""
 def merge_arrays(arr1, arr2):
-    res = []
-    for number in arr1:
-        res.append(number)
-    for number in arr2:
-        res.append(number)
+    res = arr1 + arr2 
     return sorted(res)
 
 arr1 = [1, 2, 3]
 arr2 = [4, 5, 6]
 print(merge_arrays(arr1, arr2))
 
+"""
+Merge of merge sort
+Time complexity:
+Space complexity: 
+"""
 def merge_arrays(arr1, arr2):
     res = []
     len1 = len(arr1) - 1
