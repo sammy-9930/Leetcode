@@ -17,16 +17,12 @@ class Solution(object):
         return res == res[::-1]
 """slicing similar for string and list. """
 
-
-
 """
-
 Why use lists for operations and not strings 
 Avoid string concatenation in a loop (res += char) — Strings are immutable in Python, so each += creates a new string. 
 This is inefficient in terms of time and memory. Use a list and ''.join() at the end.
 
 Use Python’s built-in isalnum() method instead of manually checking ASCII ranges.
-
 """
 
 """
