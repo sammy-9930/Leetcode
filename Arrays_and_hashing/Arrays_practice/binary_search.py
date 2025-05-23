@@ -1,7 +1,7 @@
 """
 Iterative binary search
 Time complexity : O(logn)
-Space complexity: O(n)
+Space complexity: O(1)
 """
 def binary_search(arr, target):
     low = 0
