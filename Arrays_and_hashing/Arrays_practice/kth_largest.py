@@ -1,7 +1,7 @@
 import heapq
 
 """
-Brute force 
+Brute force - using built-in sort 
 Time complexity: O(nlogn)
 Space complexity: O(1)
 """
@@ -15,23 +15,26 @@ print(k_largest(arr, k))
 
 """
 Min heap 
-Time complexity: O(nlogk)
-Space complexity: O(k)
+Time complexity: O(n + klogn)
+O(n) - time to create heap, O(klogn)- adjust the elements assuming k << n 
+Space complexity: O(1) modifying nums in place 
 """
 
-def k_largest(arr, k):
-    max_heap = []
-    for number in arr:
-        heapq.heappush(max_heap, number)
-    while len(max_heap) > k:
-        heapq.heappop(max_heap)
-    return max_heap[0]
+def k_largest(nums, k):
+    for i in range(len(nums)):
+        nums[i] = -nums[i]
 
-# ALTERNATE 
-# def findKthLargest(self, nums, k):
-#         return heapq.nlargest(k, nums)[-1]
+    heapq.heapify(nums)
+
+    for _ in range(k-1):
+        heapq.heappop(nums)
+
+    return -1 * heapq.heappop(nums)
     
 arr = [7, 10, 4, 3, 20, 15]
 k = 3
 print(k_largest(arr, k))
 
+"""
+heapq.heapify by default creates a min-heap in python. 
+"""
